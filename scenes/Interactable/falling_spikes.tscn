@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://cag0yx4u1j8fl"]
+
+[ext_resource type="Texture2D" uid="uid://ba3v6hib8ssdl" path="res://Palm Tree Island/Sprites/Objects/Spikes/Spikes.png" id="1_fs3su"]
+[ext_resource type="Script" path="res://scripts/interactables/falling_spikes.gd" id="1_j5jd3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qo2nm"]
+size = Vector2(61, 256.5)
+
+[sub_resource type="Animation" id="Animation_6o6gj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g0s3d"]
+resource_name = "Shake"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.633333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fall"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.2, 0.366667, 0.533333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-2, 0), Vector2(2, 0), Vector2(-5, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q10vp"]
+_data = {
+"RESET": SubResource("Animation_6o6gj"),
+"Shake": SubResource("Animation_g0s3d")
+}
+
+[node name="FallingSpikes" type="Node2D"]
+position = Vector2(-2, 0)
+script = ExtResource("1_j5jd3")
+
+[node name="Hitbox" type="Area2D" parent="."]
+rotation = -3.14159
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PackedVector2Array(12, 0.999999, 15, 7, 13, 11, 13, 16, 10, 16, 10, 11, 8, 9, 5, 13, 5, 16, 2, 16, 2, 12, 8.74228e-07, 10, -2, 7, -3, 16, -6, 16, -8, 8, -11, 16, -14, 16, -16, 11, -13, 4, -10, 9, -5, 4.37114e-07, 1, 7, 3, 2, 8, 7, 11, -9.61651e-07)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("1_fs3su")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 108.75)
+shape = SubResource("RectangleShape2D_qo2nm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q10vp")
+}
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

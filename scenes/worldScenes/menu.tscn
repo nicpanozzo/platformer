@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj6ki3jr2cbc8"]
+
+[ext_resource type="Script" path="res://scripts/core/menu.gd" id="1_7p662"]
+
+[node name="Menu" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_7p662")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -91.0
+offset_right = 110.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -66.0
+offset_right = 110.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Basic Level" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Basic Level"
+
+[node name="Level 1" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Level 1"
+
+[node name="Multiplayer" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Multiplayer"
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Basic Level" to="." method="_on_basic_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Level 1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]

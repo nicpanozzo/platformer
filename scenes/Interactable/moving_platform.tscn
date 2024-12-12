@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://4su0nklny1vm"]
+
+[ext_resource type="Script" path="res://scripts/interactables/moving_platform.gd" id="1_bjbrc"]
+[ext_resource type="Texture2D" uid="uid://dgansy2eb8oks" path="res://scenes/Interactable/Terrain (32x32).png" id="1_pcioq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lrhh"]
+size = Vector2(96, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw2w8"]
+size = Vector2(90, 5)
+
+[sub_resource type="Animation" id="Animation_7o2lm"]
+resource_name = "Move"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.833333, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(128, 0), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"repeatIfNecessary"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2cowp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qyyxa"]
+_data = {
+"Move": SubResource("Animation_7o2lm"),
+"RESET": SubResource("Animation_2cowp")
+}
+
+[node name="MovingPlatform" type="Node2D"]
+script = ExtResource("1_bjbrc")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture = ExtResource("1_pcioq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_5lrhh")
+
+[node name="Area2D" type="Area2D" parent="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Area2D"]
+position = Vector2(0, -16.5)
+shape = SubResource("RectangleShape2D_uw2w8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_qyyxa")
+}
+
+[connection signal="area_entered" from="AnimatableBody2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="AnimatableBody2D/Area2D" to="." method="_on_area_2d_area_exited"]

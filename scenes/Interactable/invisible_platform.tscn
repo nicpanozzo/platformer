@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://caots3y08okou"]
+
+[ext_resource type="Texture2D" uid="uid://dbjwfa6tal51d" path="res://Fierce Tooth/08-Hit/all-rock-tiles_08.png" id="1_m0n4s"]
+[ext_resource type="Script" path="res://scripts/interactables/invisible_platform.gd" id="1_rdfy7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egi5n"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3g84k"]
+size = Vector2(58, 56)
+
+[sub_resource type="Animation" id="Animation_rxtbi"]
+resource_name = "FadeIn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qn6fa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qsqqs"]
+_data = {
+"FadeIn": SubResource("Animation_rxtbi"),
+"RESET": SubResource("Animation_qn6fa")
+}
+
+[node name="InvisiblePlatform" type="StaticBody2D"]
+script = ExtResource("1_rdfy7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_m0n4s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_egi5n")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_3g84k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qsqqs")
+}
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
