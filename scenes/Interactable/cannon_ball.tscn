@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dw07vlbo8nkuf"]
 
 [ext_resource type="Script" path="res://scripts/interactables/cannon_ball.gd" id="1_fkk6w"]
-[ext_resource type="Texture2D" uid="uid://bwxqef3odwbsl" path="res://Cannon/Cannon Ball Idle/1.png" id="2_y6s6h"]
+[ext_resource type="Texture2D" uid="uid://bwxqef3odwbsl" path="res://assets/Cannon/Cannon Ball Idle/1.png" id="2_y6s6h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ryxeh"]
 radius = 7.78235

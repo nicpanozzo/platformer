@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cag0yx4u1j8fl"]
 
-[ext_resource type="Texture2D" uid="uid://ba3v6hib8ssdl" path="res://Palm Tree Island/Sprites/Objects/Spikes/Spikes.png" id="1_fs3su"]
+[ext_resource type="Texture2D" uid="uid://ba3v6hib8ssdl" path="res://assets/Palm Tree Island/Sprites/Objects/Spikes/Spikes.png" id="1_fs3su"]
 [ext_resource type="Script" path="res://scripts/interactables/falling_spikes.gd" id="1_j5jd3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qo2nm"]

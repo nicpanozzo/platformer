@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 GameManage="*res://scripts/core/game_manager.gd"
 LevelData="*res://scripts/core/LevelData.gd"
-MultiplayerManager="*res://multiplayerManager.gd"
+MultiplayerManager="*res://scripts/core/multiplayerManager.gd"
 
 [display]
 

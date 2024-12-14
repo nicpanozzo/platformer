@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://caots3y08okou"]
 
-[ext_resource type="Texture2D" uid="uid://dbjwfa6tal51d" path="res://Fierce Tooth/08-Hit/all-rock-tiles_08.png" id="1_m0n4s"]
+[ext_resource type="Texture2D" uid="uid://dbjwfa6tal51d" path="res://assets/Fierce Tooth/08-Hit/all-rock-tiles_08.png" id="1_m0n4s"]
 [ext_resource type="Script" path="res://scripts/interactables/invisible_platform.gd" id="1_rdfy7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egi5n"]

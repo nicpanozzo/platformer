@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://phs6ajedfgiv"]
 
 [ext_resource type="Script" path="res://scripts/UI/ui_manager.gd" id="1_xfxuq"]
-[ext_resource type="Texture2D" uid="uid://cfwucgpeo3ovu" path="res://Gold Coin/01.png" id="2_lhqfu"]
-[ext_resource type="Texture2D" uid="uid://brsrgv6d7nd2n" path="res://Fierce Tooth/08-Hit/06-Hit/heart-pixel-art-254x254.png" id="3_u33yr"]
+[ext_resource type="Texture2D" uid="uid://cfwucgpeo3ovu" path="res://assets/Gold Coin/01.png" id="2_lhqfu"]
+[ext_resource type="Texture2D" uid="uid://brsrgv6d7nd2n" path="res://assets/Fierce Tooth/08-Hit/06-Hit/heart-pixel-art-254x254.png" id="3_u33yr"]
 
 [node name="UIManager" type="CanvasLayer"]
 process_mode = 3

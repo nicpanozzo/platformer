@@ -9,6 +9,7 @@ func _ready() -> void:
 	GameManage.win_screen = $WinScreen
 	GameManage.score_label = $WinScreen/Label
 	
+	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		GameManage.pause_play()
@@ -19,7 +20,7 @@ func update_coin_display(gained_coins):
 	$CoinDisplay.text = str(GameManage.coins)
 
 func update_health(health):
-	$HealthDisplay.text = str(GameManage.player.healt)
+	$HealthDisplay.text = str(GameManage.player.health)
 
 
 func _on_resume_pressed() -> void:

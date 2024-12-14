@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://3ye37wv6x8l1"]
 
-[ext_resource type="Texture2D" uid="uid://ba3v6hib8ssdl" path="res://Palm Tree Island/Sprites/Objects/Spikes/Spikes.png" id="1_28rni"]
-[ext_resource type="Script" path="res://scripts/spikes.gd" id="1_111ob"]
+[ext_resource type="Texture2D" uid="uid://ba3v6hib8ssdl" path="res://assets/Palm Tree Island/Sprites/Objects/Spikes/Spikes.png" id="1_28rni"]
+[ext_resource type="Script" path="res://scripts/interactables/spikes.gd" id="1_111ob"]
 
 [node name="Spikes" type="Node2D"]
 script = ExtResource("1_111ob")

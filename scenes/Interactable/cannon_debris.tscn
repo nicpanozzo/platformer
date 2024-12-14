@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://dtum621jhx5uq"]
 
-[ext_resource type="Texture2D" uid="uid://cfdxyqeifjn65" path="res://Cannon/Cannon Hit/1.png" id="1_daf6f"]
-[ext_resource type="Texture2D" uid="uid://ba1gqqxpvgc8m" path="res://Cannon/Cannon Destroyed/1.png" id="2_5t0o6"]
-[ext_resource type="Texture2D" uid="uid://cjyb5mnidbhr0" path="res://Cannon/Cannon Destroyed/2.png" id="3_36bj2"]
-[ext_resource type="Texture2D" uid="uid://bp7cq4nrij7bb" path="res://Cannon/Cannon Destroyed/3.png" id="4_abb5i"]
-[ext_resource type="Texture2D" uid="uid://cnrsovjxnitfg" path="res://Cannon/Cannon Destroyed/4.png" id="5_12ae1"]
+[ext_resource type="Texture2D" uid="uid://cfdxyqeifjn65" path="res://assets/Cannon/Cannon Hit/1.png" id="1_daf6f"]
+[ext_resource type="Texture2D" uid="uid://ba1gqqxpvgc8m" path="res://assets/Cannon/Cannon Destroyed/1.png" id="2_5t0o6"]
+[ext_resource type="Texture2D" uid="uid://cjyb5mnidbhr0" path="res://assets/Cannon/Cannon Destroyed/2.png" id="3_36bj2"]
+[ext_resource type="Texture2D" uid="uid://bp7cq4nrij7bb" path="res://assets/Cannon/Cannon Destroyed/3.png" id="4_abb5i"]
+[ext_resource type="Texture2D" uid="uid://cnrsovjxnitfg" path="res://assets/Cannon/Cannon Destroyed/4.png" id="5_12ae1"]
 
 [sub_resource type="Animation" id="Animation_goypm"]
 resource_name = "Crumble"

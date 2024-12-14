@@ -66,6 +66,7 @@ func StartGame():
 	self.hide()
 	
 
+
 @rpc	("any_peer")
 func sendPlayerInfo(name,id):
 	if !MultiplayerManager.players.has(id):
