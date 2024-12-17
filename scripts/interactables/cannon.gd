@@ -36,13 +36,14 @@ func fire():
 	spawned_ball.direction = firepoint.scale.x
 	spawned_ball.global_position = firepoint.position
 	add_child(spawned_ball)
-		
+	
+@rpc("any_peer","call_local","reliable")
 func take_damage(damage_amount):
 	health -= damage_amount
 	
-	get_node("Healthbar").update_healthbar(health, max_health)
 	
 	animation_player.play("Hit")
+	get_node("Healthbar").update_healthbar(health, max_health)
 	if health <= 0:
 		die()
 	#shoot()

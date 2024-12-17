@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bv6mc7vrhualr"]
+[gd_scene load_steps=41 format=3 uid="uid://bv6mc7vrhualr"]
 
 [ext_resource type="Script" path="res://scripts/player/player_multi.gd" id="1_s284d"]
 [ext_resource type="Texture2D" uid="uid://ccw7bpe7r28j5" path="res://assets/09-Idle Sword/Idle Sword 01.png" id="2_848q6"]
@@ -23,7 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://io336ui7slds" path="res://assets/10-Run Sword/Run Sword 04.png" id="21_4kaxr"]
 [ext_resource type="Texture2D" uid="uid://cftdamwqiky8" path="res://assets/10-Run Sword/Run Sword 05.png" id="22_22pac"]
 [ext_resource type="Texture2D" uid="uid://b6khhnklhnmv3" path="res://assets/10-Run Sword/Run Sword 06.png" id="23_2a3wv"]
+[ext_resource type="Texture2D" uid="uid://brdwpgfw4i6wm" path="res://scenes/entities/Attack 2 01.png" id="24_43nke"]
 [ext_resource type="PackedScene" uid="uid://dxfpuchxyl25y" path="res://scenes/UI/healthbar.tscn" id="24_rvgbo"]
+[ext_resource type="Texture2D" uid="uid://cu8ytjj2ewnuo" path="res://assets/15-Attack 1/Attack 2 02.png" id="25_0wr03"]
+[ext_resource type="Texture2D" uid="uid://3pawn7rka5ye" path="res://assets/15-Attack 1/Attack 2 03.png" id="26_hedvw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxr80"]
 radius = 11.0
@@ -152,6 +155,34 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_yeiij"]
+resource_name = "RangedAttack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0333333, 0.1, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_4rksm"), ExtResource("3_4rksm"), ExtResource("24_43nke"), ExtResource("25_0wr03"), ExtResource("26_hedvw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:attacking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_clj1r"]
 resource_name = "Run"
 length = 0.5
@@ -177,6 +208,7 @@ _data = {
 "Idle": SubResource("Animation_eo40o"),
 "Jump": SubResource("Animation_3r3ue"),
 "RESET": SubResource("Animation_ib45v"),
+"RangedAttack": SubResource("Animation_yeiij"),
 "Run": SubResource("Animation_clj1r")
 }
 
@@ -224,3 +256,5 @@ offset_left = 1.0
 offset_top = -17.0
 offset_right = 1.0
 offset_bottom = -17.0
+
+[node name="Camera2D" type="Camera2D" parent="."]

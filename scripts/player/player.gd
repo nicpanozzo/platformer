@@ -10,7 +10,7 @@ class_name Player
 @export var attacking = false
 
 var max_health = 2
-var health = 0
+@export var health = 0
 
 var can_take_damage = true
 signal health_signal(int)

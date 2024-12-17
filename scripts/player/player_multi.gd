@@ -1,21 +1,28 @@
 extends Player
+class_name PlayerMulti
 
 
 var syncPos = Vector2(0,0)
 @onready
 var animation_p = $AnimationPlayer
 
+@onready var projectile_scene = preload("res://scenes/entities/projectile.tscn")
+@onready var camera = $Camera2D  # Assicurati che la Camera2D sia figlio del Player
+
+	
 var current_animation = ""
 
 func _ready() -> void:
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	get_node("Healthbar").update_healthbar(health, max_health)
+	camera.enabled = false
 	change_color_healthbar()
 	
 @rpc("call_local")
 func change_color_healthbar():
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		get_node("Healthbar").get_child(0).color = Color(0,.9,0)
+		camera.enabled = true
 	
  
 func _physics_process(delta: float) -> void:
@@ -50,6 +57,9 @@ func _physics_process(delta: float) -> void:
 			attack.rpc()
 		if Input.is_action_just_pressed("go_down"):
 			go_down()
+		
+		if Input.is_action_just_pressed("ranged_attack"):
+			perform_ranged_attack.rpc()
 		sync_animation_state()
 		move_and_slide()
 		
@@ -62,6 +72,34 @@ func _physics_process(delta: float) -> void:
 @rpc("any_peer","call_local","reliable")
 func flipping(value):
 	sprite.scale.x = value
+
+
+@rpc("any_peer","call_local","unreliable")
+func perform_ranged_attack():
+	
+	print("RANGED")
+	# Create the projectile
+	var projectile: Projectile = projectile_scene.instantiate()
+	
+	# Set the velocity based on the player's facing direction
+	var direction = null
+	if (sprite.scale.x > 0): 
+		direction = Vector2.RIGHT 
+	else:
+		direction = Vector2.LEFT
+	projectile.global_position = self.global_position + direction * 40
+	get_parent().add_child(projectile)
+
+	# Set the initial position of the projectile
+	#projectile.global_position = self.global_position
+
+	projectile.set_direction(direction)
+
+	
+	# Optional: Sync the attack animation
+	
+	attacking = true
+	animation_player.play("RangedAttack")
 	
 func sync_animation_state():
 	if !attacking and can_take_damage:
@@ -95,6 +133,7 @@ func attack():
 		var parent = area.get_parent()
 		if parent.has_method("take_damage"):
 			parent.take_damage.rpc(1)
+			print("taking damage")
 		print(parent.name)
 		
 		
@@ -103,6 +142,7 @@ func attack():
 
 @rpc("any_peer","call_local","reliable")
 func take_damage(damage: int):
+	
 	print("health: ", health)
 	if can_take_damage:
 		animation_player.play("Hit")

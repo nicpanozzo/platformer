@@ -8,7 +8,7 @@ var peer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	multiplayer.peer_connected.connect(peerConnected)
-	multiplayer.peer_disconnected.connect(peerDisconnected)
+	multiplayer.peer_disconnected.connect(MultiplayerManager.peerDisconnected)
 	multiplayer.connected_to_server.connect(connectedToServer)
 	multiplayer.connection_failed.connect(connectionFailed)
 	if "--server" in OS.get_cmdline_args():
@@ -40,9 +40,11 @@ func connectionFailed(id):
 
 func peerConnected(id):
 	print("player connected " + str(id))
+	MultiplayerManager.update_players_label()
 	
 func peerDisconnected(id):
-	print("player disconnected " + str(id))
+	
+	MultiplayerManager.peerDisconnected(id)
 
 func _on_host_pressed() -> void:
 	hostGame()

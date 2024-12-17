@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bwghiq08djw4d"]
+[gd_scene load_steps=13 format=4 uid="uid://bwghiq08djw4d"]
 
 [ext_resource type="Texture2D" uid="uid://bxn034wyxybcc" path="res://assets/Palm Tree Island/Sprites/Terrain/Terrain (32x32).png" id="1_difbm"]
 [ext_resource type="Script" path="res://scripts/core/level_0.gd" id="1_nhm0c"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bcuts0q7pfl8r" path="res://assets/Palm Tree Island/Sprites/Background/Small Cloud 2.png" id="2_q1iu8"]
 [ext_resource type="Texture2D" uid="uid://bo7hiaqkv3dcd" path="res://assets/Fierce Tooth/01-Idle/Platforms (32x32).png" id="3_pe8cr"]
 [ext_resource type="PackedScene" uid="uid://nsyl5pxh4sg2" path="res://scenes/UI/ui_multi_manager.tscn" id="6_60r2i"]
+[ext_resource type="PackedScene" uid="uid://bb2mre382xa4g" path="res://scenes/Interactable/cannon.tscn" id="7_nexpl"]
+[ext_resource type="PackedScene" uid="uid://1nhw7fegvqcd" path="res://scenes/Interactable/coin.tscn" id="8_yd5us"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vvp8c"]
 texture = ExtResource("1_difbm")
@@ -466,3 +468,12 @@ position = Vector2(234, 99)
 position = Vector2(418, 106)
 
 [node name="UIMultiManager" parent="." instance=ExtResource("6_60r2i")]
+
+[node name="Cannon" parent="." instance=ExtResource("7_nexpl")]
+position = Vector2(310, 74)
+
+[node name="Coin" parent="." instance=ExtResource("8_yd5us")]
+position = Vector2(107, 139)
+
+[node name="Coin2" parent="." instance=ExtResource("8_yd5us")]
+position = Vector2(539, 140)

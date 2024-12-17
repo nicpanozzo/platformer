@@ -9,6 +9,9 @@ func _ready() -> void:
 	GameManage.win_screen = $WinScreen
 	GameManage.score_label = $WinScreen/Label
 	MultiplayerManager.players_label = $players
+	MultiplayerManager.update_players_label()
+	#$players.text = MultiplayerManager.players_list()
+	
 	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
